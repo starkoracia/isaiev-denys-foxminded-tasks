@@ -3,12 +3,12 @@ package com.foxminded.isaievdenys.anagrams;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringReverser {
+public class AnagramMaker {
 
-    private StringReverser() {
+    private AnagramMaker() {
     }
 
-    public static String reverseWordsInStringExceptNonLetterSymbols(String sourceString) {
+    public static String makeAnagram(String sourceString) {
         StringBuilder outputString = new StringBuilder();
         String[] words = sourceString.split("\\s+");
 
