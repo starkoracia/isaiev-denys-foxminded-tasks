@@ -62,9 +62,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithOnlyTabsAndOrSpacesMessage_whenGetSingleSpace() {
         String singleSpace = " ";
         String expectedExceptionMessage = "sentence contains only tabs and/or spaces";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(singleSpace);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(singleSpace));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
@@ -72,9 +70,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithSentenceIsEmptyMessage_whenGetEmptyString() {
         String emptyString = "";
         String expectedExceptionMessage = "sentence is empty";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(emptyString);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(emptyString));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
@@ -82,9 +78,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithOnlyTabsAndOrSpacesMessage_whenGetSeveralSpaces() {
         String severalSpaces = "     ";
         String expectedExceptionMessage = "sentence contains only tabs and/or spaces";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(severalSpaces);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(severalSpaces));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
@@ -92,9 +86,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithSentenceIsNullMessage_whenGetNull() {
         String nullString = null;
         String expectedExceptionMessage = "sentence is null";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(nullString);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(nullString));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
@@ -102,9 +94,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithOnlyTabsAndOrSpacesMessage_whenGetSeveralTabs() {
         String severalSpaces = "\t\t\t";
         String expectedExceptionMessage = "sentence contains only tabs and/or spaces";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(severalSpaces);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(severalSpaces));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
@@ -112,9 +102,7 @@ class AnagramMakerTest {
     void makeAnagram_shouldThrowIllegalArgumentExceptionWithOnlyTabsAndOrSpacesMessage_whenGetSeveralTabsAndSeveralSpaces() {
         String severalSpaces = "\t  \t  \t ";
         String expectedExceptionMessage = "sentence contains only tabs and/or spaces";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            makeAnagram(severalSpaces);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> makeAnagram(severalSpaces));
         assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 
