@@ -95,7 +95,6 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
-
                             <rules>
                                 <rule>
                                     <limits>
@@ -108,6 +107,7 @@
                             </rules>
                             <excludes>
                                 <exclude>com/foxminded/isaievdenys/integerdivision/IntegerDivisionApp.class</exclude>
+                                <exclude>com/foxminded/isaievdenys/integerdivision/AppTester.class</exclude>
                             </excludes>
                         </configuration>
                     </execution>
