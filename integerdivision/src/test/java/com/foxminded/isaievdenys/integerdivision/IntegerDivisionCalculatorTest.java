@@ -1,28 +1,24 @@
 package com.foxminded.isaievdenys.integerdivision;
 
-import org.junit.jupiter.api.AfterEach;
+import com.foxminded.isaievdenys.integerdivision.provider.DivisionMathProviderImpl;
+import com.foxminded.isaievdenys.integerdivision.provider.DivisionViewProviderImpl;
+import com.foxminded.isaievdenys.integerdivision.validator.DivisionValidatorImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class IntegerDividerTest {
+class IntegerDivisionCalculatorTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
+    private IntegerDivisionCalculator calculator;
 
     @BeforeEach
-    void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @AfterEach
-    void restoreStreams() {
-        System.setOut(originalOut);
+    void init() {
+        calculator = new IntegerDivisionCalculator(
+            new DivisionValidatorImpl(),
+            new DivisionViewProviderImpl(),
+            new DivisionMathProviderImpl());
     }
 
     @Test
@@ -43,8 +39,8 @@ class IntegerDividerTest {
                  975
 
             """;
-        IntegerDivider.makeDivision(5325291, 1212);
-        assertEquals(expected.trim(), outContent.toString().trim());
+        String result = calculator.makeDivision(5325291, 1212);
+        assertEquals(expected.trim(), result.trim());
     }
 
     @Test
@@ -68,8 +64,8 @@ class IntegerDividerTest {
                   1
 
             """;
-        IntegerDivider.makeDivision(127891, -5);
-        assertEquals(expected.trim(), outContent.toString().trim());
+        String result = calculator.makeDivision(127891, -5);
+        assertEquals(expected.trim(), result.trim());
     }
 
     @Test
@@ -90,8 +86,8 @@ class IntegerDividerTest {
                   975
 
             """;
-        IntegerDivider.makeDivision(-5325291, 1212);
-        assertEquals(expected.trim(), outContent.toString().trim());
+        String result = calculator.makeDivision(-5325291, 1212);
+        assertEquals(expected.trim(), result.trim());
     }
 
     @Test
@@ -112,36 +108,36 @@ class IntegerDividerTest {
                   16
 
             """;
-        IntegerDivider.makeDivision(-127891, -31);
-        assertEquals(expected.trim(), outContent.toString().trim());
+        String result = calculator.makeDivision(-127891, -31);
+        assertEquals(expected.trim(), result.trim());
     }
 
     @Test
     void makeDivision_shouldThrowIllegalArgumentExceptionWithDividendIsNullMessage_whenDividendIsNull() {
         String expectedErrorMessage = "dividend is null";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> IntegerDivider.makeDivision(null, -31));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.makeDivision(null, -31));
         assertEquals(expectedErrorMessage, exception.getMessage());
     }
 
     @Test
     void makeDivision_shouldThrowIllegalArgumentExceptionWithDivisorIsNullMessage_whenDivisorIsNull() {
         String expectedErrorMessage = "divisor is null";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> IntegerDivider.makeDivision(-31, null));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.makeDivision(-31, null));
         assertEquals(expectedErrorMessage, exception.getMessage());
     }
 
     @Test
     void makeDivision_shouldThrowIllegalArgumentExceptionWithDivisorCanNotBeZeroMessage_whenDivisorEqualsZero() {
         String expectedErrorMessage = "divisor can not be 0";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> IntegerDivider.makeDivision(31, 0));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.makeDivision(31, 0));
         assertEquals(expectedErrorMessage, exception.getMessage());
     }
 
     @Test
     void makeDivision_shouldPrintResultEqualToZero_whenDividendLessThanDivisorInAbsolute() {
         String expected = "-111 / -5325291 = 0";
-        IntegerDivider.makeDivision(-111, -5325291);
-        assertEquals(expected.trim(), outContent.toString().trim());
+        String result = calculator.makeDivision(-111, -5325291);
+        assertEquals(expected.trim(), result.trim());
     }
 
 }
