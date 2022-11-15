@@ -6,9 +6,9 @@ import com.foxminded.isaievdenys.integerdivision.provider.DivisionViewProvider;
 import com.foxminded.isaievdenys.integerdivision.validator.DivisionValidator;
 
 public class IntegerDivisionCalculator {
-    DivisionValidator validator;
-    DivisionViewProvider viewProvider;
-    DivisionMathProvider mathProvider;
+    private final DivisionValidator validator;
+    private final DivisionViewProvider viewProvider;
+    private final DivisionMathProvider mathProvider;
 
     public IntegerDivisionCalculator(DivisionValidator validator, DivisionViewProvider viewProvider, DivisionMathProvider mathProvider) {
         this.validator = validator;

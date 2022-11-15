@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class DivisionResult {
     private final List<DivisionStep> steps;
-    private final Integer dividend;
-    private final Integer divisor;
+    private final int dividend;
+    private final int divisor;
 
     public DivisionResult(List<DivisionStep> steps, Integer dividend, Integer divisor) {
         this.steps = steps;
@@ -28,10 +28,16 @@ public class DivisionResult {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         DivisionResult that = (DivisionResult) o;
-        return Objects.equals(steps, that.steps) && Objects.equals(dividend, that.dividend) && Objects.equals(divisor, that.divisor);
+        return Objects.equals(steps, that.steps) &&
+            Objects.equals(dividend, that.dividend) &&
+            Objects.equals(divisor, that.divisor);
     }
 
     @Override

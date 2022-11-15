@@ -4,17 +4,14 @@ import com.foxminded.isaievdenys.integerdivision.provider.DivisionMathProviderIm
 import com.foxminded.isaievdenys.integerdivision.provider.DivisionViewProviderImpl;
 import com.foxminded.isaievdenys.integerdivision.validator.DivisionValidatorImpl;
 
-public class AppTester {
-    IntegerDivisionCalculator calculator;
+public class ConsoleDivisionApplication {
 
-    public AppTester() {
-        calculator = new IntegerDivisionCalculator(
+    public static void main(String[] args) {
+        IntegerDivisionCalculator calculator  = new IntegerDivisionCalculator(
             new DivisionValidatorImpl(),
             new DivisionViewProviderImpl(),
             new DivisionMathProviderImpl());
-    }
 
-    public void runTest() {
         System.out.println(calculator.makeDivision(-127891, -31));
         System.out.println(calculator.makeDivision(127891, -5));
         System.out.println(calculator.makeDivision(-5325291, 1212));

@@ -10,7 +10,8 @@ public class DivisionMathProviderImpl implements DivisionMathProvider {
 
     @Override
     public DivisionResult provideLongDivision(Integer dividend, Integer divisor) {
-        return new DivisionResult(calculateSteps(dividend, divisor), dividend, divisor);
+        List<DivisionStep> steps = calculateSteps(dividend, divisor);
+        return new DivisionResult(steps, dividend, divisor);
     }
 
     private List<DivisionStep> calculateSteps(Integer dividend, Integer divisor) {

@@ -3,8 +3,8 @@ package com.foxminded.isaievdenys.integerdivision.domain;
 import java.util.Objects;
 
 public class DivisionStep {
-    private final Integer minuend;
-    private final Integer subtrahend;
+    private final int minuend;
+    private final int subtrahend;
 
     public DivisionStep(Integer minuend, Integer subtrahend) {
         this.minuend = minuend;
@@ -21,10 +21,15 @@ public class DivisionStep {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         DivisionStep that = (DivisionStep) o;
-        return Objects.equals(minuend, that.minuend) && Objects.equals(subtrahend, that.subtrahend);
+        return Objects.equals(minuend, that.minuend) &&
+            Objects.equals(subtrahend, that.subtrahend);
     }
 
     @Override
