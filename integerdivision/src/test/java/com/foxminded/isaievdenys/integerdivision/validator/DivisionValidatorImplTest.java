@@ -7,12 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DivisionValidatorImplTest {
-    DivisionValidator validator;
-
-    @BeforeEach
-    void init() {
-        validator = new DivisionValidatorImpl();
-    }
+    DivisionValidator validator = new DivisionValidatorImpl();
 
     @Test
     void validate_shouldThrowIllegalArgumentExceptionWithDividendIsNullMessage_whenGetNullDividendAndPositiveDivisor() {

@@ -12,12 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DivisionMathProviderImplTest {
-    DivisionMathProvider mathProvider;
-
-    @BeforeEach
-    void init() {
-        mathProvider = new DivisionMathProviderImpl();
-    }
+    DivisionMathProvider mathProvider = new DivisionMathProviderImpl();
 
     @Test
     void provideLongDivision_shouldReturnDivisionResult_whenGetPositiveDividendAndDivisor() {

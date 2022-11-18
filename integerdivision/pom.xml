@@ -24,6 +24,18 @@
             <version>${juinit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.9.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -106,8 +118,7 @@
                                 </rule>
                             </rules>
                             <excludes>
-                                <exclude>com/foxminded/isaievdenys/integerdivision/IntegerDivisionApp.class</exclude>
-                                <exclude>com/foxminded/isaievdenys/integerdivision/AppTester.class</exclude>
+                                <exclude>com/foxminded/isaievdenys/integerdivision/ConsoleDivisionApplication.class</exclude>
                                 <exclude>com/foxminded/isaievdenys/integerdivision/domain/*</exclude>
                             </excludes>
                         </configuration>

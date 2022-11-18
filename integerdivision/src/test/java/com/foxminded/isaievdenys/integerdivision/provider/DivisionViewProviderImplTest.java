@@ -11,12 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DivisionViewProviderImplTest {
-    DivisionViewProvider viewProvider;
-
-    @BeforeEach
-    void init() {
-        viewProvider = new DivisionViewProviderImpl();
-    }
+    DivisionViewProvider viewProvider = new DivisionViewProviderImpl();
 
     @Test
     void provideView_shouldReturnDivisionResultString_whenGetPositiveDividendAndDivisor() {
@@ -42,6 +37,20 @@ class DivisionViewProviderImplTest {
             new DivisionStep(4772, 3636),
             new DivisionStep(11369, 10908),
             new DivisionStep(4611, 3636));
+        DivisionResult divisionResult = new DivisionResult(steps, dividend, divisor);
+        String resultString = viewProvider.provideView(divisionResult);
+        assertEquals(expectedString.trim(), resultString.trim());
+    }
+
+    @Test
+    void provideView_shouldReturnDivisionResultString_whenGetPositiveDividendAndEqualDivisor() {
+        int dividend = 5325291;
+        int divisor = 5325291;
+        String expectedString = """
+            5325291 / 5325291 = 1
+            """;
+        List<DivisionStep> steps = List.of(
+            new DivisionStep(5325291, 5325291));
         DivisionResult divisionResult = new DivisionResult(steps, dividend, divisor);
         String resultString = viewProvider.provideView(divisionResult);
         assertEquals(expectedString.trim(), resultString.trim());
@@ -150,9 +159,36 @@ class DivisionViewProviderImplTest {
     }
 
     @Test
-    void provideView_shouldThrowNullPointerException_whenGetNullDivisionResult() {
-        DivisionResult divisionResult = null;
-        assertThrows(NullPointerException.class, () -> viewProvider.provideView(divisionResult));
+    void provideView_shouldReturnDivisionResultStringEqualToZero_whenPositiveDividendLessThanPositiveDivisor() {
+        int dividend = 111;
+        int divisor = 5325291;
+        String expectedString = "111 / 5325291 = 0";
+        List<DivisionStep> steps = List.of();
+        DivisionResult divisionResult = new DivisionResult(steps, dividend, divisor);
+        String resultString = viewProvider.provideView(divisionResult);
+        assertEquals(expectedString.trim(), resultString.trim());
+    }
+
+    @Test
+    void provideView_shouldReturnDivisionResultStringEqualToZero_whenDividendEqualsZeroAndLessThanDivisorInAbsolute() {
+        int dividend = 0;
+        int divisor = 5325291;
+        String expectedString = "0 / 5325291 = 0";
+        List<DivisionStep> steps = List.of();
+        DivisionResult divisionResult = new DivisionResult(steps, dividend, divisor);
+        String resultString = viewProvider.provideView(divisionResult);
+        assertEquals(expectedString.trim(), resultString.trim());
+    }
+
+    @Test
+    void provideView_shouldReturnDivisionResultStringEqualToZero_whenDividendEqualsZeroAndMoreThanDivisorInAbsolute() {
+        int dividend = 0;
+        int divisor = -5325291;
+        String expectedString = "0 / -5325291 = 0";
+        List<DivisionStep> steps = List.of();
+        DivisionResult divisionResult = new DivisionResult(steps, dividend, divisor);
+        String resultString = viewProvider.provideView(divisionResult);
+        assertEquals(expectedString.trim(), resultString.trim());
     }
 
 }
